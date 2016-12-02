@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -9,6 +9,11 @@
     "lib": [ "es2015", "dom" ],
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "configFileName": "tsconfig-aot.json",
+    "useBabel": true,
+    "useCache": true
   },
   "exclude": [
     "node_modules/*",
