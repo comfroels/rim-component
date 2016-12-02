@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "es2015",
+    "module": "amd",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -11,18 +11,17 @@
     "suppressImplicitAnyIndexErrors": true
   },
 
-  "files": [
-    "app/app.module.ts",
-    "app/main.ts"
-  ],
-
   "angularCompilerOptions": {
     "genDir": "aot",
     "skipMetadataEmit": true
   },
-
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "useCache": true
+  },
   "exclude": [
     "node_modules/*",
-    "**/*-aot.ts"
+    "**/*-aot.ts",
+    "**/*spec.ts"
   ]
 }

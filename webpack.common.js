@@ -4,7 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
 
 module.exports = {
-    entry: {
+  entry: {
       'polyfills': './app/polyfills.ts',
       'vendor': './app/vendor.ts',
       'app': './app/main.ts',
@@ -18,7 +18,12 @@ module.exports = {
     loaders: [
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+        loaders: [
+          'babel-loader?presets[]=es2015',
+          'awesome-typescript-loader?configFileName=tsconfig-aot.json',
+          'angular2-template-loader'
+        ],
+        exclude: [/\.(spec|e2e|d)\.ts$/]
       },
       {
         test: /\.html$/,

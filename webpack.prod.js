@@ -9,8 +9,13 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 module.exports = webpackMerge(commonConfig, {
   devtool: 'source-map',
 
+  entry: {
+      'polyfills': './app/polyfills.ts',
+      'vendor': './app/vendor.ts',
+      'app': './app/main.aot.ts',
+  },
   output: {
-    path: helpers.root('dist'),
+    path: helpers.root('rim-component','dist'),
     publicPath: '/',
     filename: '[name].[hash].js',
     chunkFilename: '[id].[hash].chunk.js'
@@ -20,14 +25,16 @@ module.exports = webpackMerge(commonConfig, {
     minimize: false // workaround for ng2
   },
 
+  //this isnt working and causing webpack issues
+  // new webpack.optimize.UglifyJsPlugin({ // https://github.com/angular/angular/issues/10618
+  //     mangle: {
+  //       keep_fnames: true
+  //     }
+  //   }),
+
   plugins: [
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin({ // https://github.com/angular/angular/issues/10618
-      mangle: {
-        keep_fnames: true
-      }
-    }),
     new ExtractTextPlugin('[name].[hash].css'),
     new webpack.DefinePlugin({
       'process.env': {
